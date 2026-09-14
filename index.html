@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <title>Historical Analysis: The Napoleonic Era</title>
     <style>
-        /* Base Essay Page Styling */
         body {
             font-family: 'Times New Roman', Times, serif;
             line-height: 1.6;
@@ -27,29 +26,24 @@
             height: 100vh;
             background: #000000;
             z-index: 99999;
-            
-            /* Hidden configurations by default */
             visibility: hidden; 
             opacity: 0;
             pointer-events: none; 
             transition: opacity 0.2s ease; 
         }
 
-        /* Revealed configuration */
         #moonlight-wrapper.show-stream {
             visibility: visible;
             opacity: 1;
             pointer-events: auto;
         }
 
-        /* The full-screen frame layout */
         iframe {
             width: 100%;
             height: 100%;
             border: none;
         }
 
-        /* Your hidden trigger text styling */
         #trigger {
             margin-top: 50px;
             font-style: italic;
@@ -65,20 +59,18 @@
     <h1>The Grand Strategy and Logistics of the Napoleonic Wars</h1>
     
     <h3>The Italian Campaign and Revolutionary Doctrine</h3>
-    <p>The military ascension of Napoleon Bonaparte cannot be decoupled from the foundational tactical evolutions of the late eighteenth century. Stepping into supreme command during the Italian Campaign of 1796, Bonaparte inherited a highly motivated but fundamentally disorganized French army. By enforcing strict adherence to rapid divisional mobility and internal lines of communication, he systematically isolated the separate contingents of the Piedmontese and Austrian coalitions.</p>
+    <p>The military ascension of Napoleon Bonaparte cannot be decoupled from the foundational tactical evolutions of the late eighteenth century. Stepping into supreme command during the Italian Campaign of 1796, Bonaparte inherited a highly motivated but fundamentally disorganized French army.</p>
     
     <h3>Austerlitz and the Apogee of the Corps System</h3>
-    <p>By December of 1805, the implementation of the independent Corps d'Armée system granted the Grand Armée an unmatched tactical fluidity. At the Battle of Austerlitz, frequently categorized as a masterpiece of tactical deception, Napoleon purposefully abandoned the strategic high ground of the Pratzen Heights. This calculated retreat enticed the combined Austro-Russian supreme command into launching an overextended assault on the French right flank.</p>
+    <p>By December of 1805, the implementation of the independent Corps d'Armée system granted the Grand Armée an unmatched tactical fluidity. At the Battle of Austerlitz, frequently categorized as a masterpiece of tactical deception, Napoleon purposefully abandoned the strategic high ground of the Pratzen Heights.</p>
 
-    <!-- YOUR CUSTOM FOOTER TRIGGER TEXT -->
+    <!-- YOUR CUSTOM TRIGGER ELEMENT -->
     <p id="trigger">Made in five minutes by Anthony Kaiser!</p>
 
-    <!-- THE FULLSCREEN PORTAL LAYER (No scripts or prompt setups required) -->
-    <!-- Update your iframe code placeholder block to match this exact line -->
+    <!-- THE IFRAME PORTAL LAYER -->
     <div id="moonlight-wrapper">
-        <iframe id="moonlight-frame" src="" allow="local-network-access; gamepad; autocomplete"></iframe>
+        <iframe id="moonlight-frame" src=""></iframe>
     </div>
-
 
 </body>
 </html>
@@ -87,9 +79,8 @@
   const textElement = document.getElementById("trigger");
   let isStreamActive = false;
   
-  // Hardcoding your target server right here to bypass popups entirely
-  const TARGET_IP = "192.168.1.214";
-  const STREAMER_PORT = 8080; 
+  // REPLACE THE LINK BELOW WITH YOUR UNIQUE TRYCLOUDFLARE LINK FROM TERMINAL
+  const CLOUDFLARE_URL = "https://west-mega-word-fossil.trycloudflare.com"; 
 
   textElement.addEventListener("click", function() {
     console.log("the button clicky");
@@ -98,25 +89,16 @@
     const frame = document.getElementById('moonlight-frame');
 
     if (!isStreamActive) {
-        // Direct route target connection string
-        let targetUrl = `http://${TARGET_IP}:${STREAMER_PORT}`;
-        console.log(`Connecting portal straight to target: ${targetUrl}`);
-
-        // Inject the address source directly and bring it to view
-        frame.src = targetUrl;
+        // Points the iframe directly to your secure public tunnel link
+        frame.src = CLOUDFLARE_URL;
         wrapper.classList.add('show-stream');
-        
-        // Force input focus inside the frame environment so inputs translate cleanly
         frame.focus();
         isStreamActive = true;
-
     } else {
-        // If clicked again while open, instantly wipe the frame source to drop connection
         wrapper.classList.remove('show-stream');
         frame.src = ""; 
         frame.blur();
         isStreamActive = false;
-        console.log("Connection closed smoothly.");
     }
   });
 </script>
