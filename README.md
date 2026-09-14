@@ -1,2 +1,2 @@
 # Napoleon
-A resource about Napoleon
+An educational resource about Napoleon
